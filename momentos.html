@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
+    
+    /* .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    } */
+
+    /* .galeria img {
+      height: auto;
+      margin: 30px;
+    } */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('imagens/background.png');
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: "Sono", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 35px;
+      padding: 20px;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      /* borda */
+      border: 4px solid #afc099;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.39);
+      display: flex;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .divDoBotao {
+      position: absolute; /* Torna possível posicionar com `top` e `left` */
+      top: 50%; /* Centraliza verticalmente */
+      left: 70px; /* Alinha à esquerda com um espaço de 20px da borda */
+      display: flex;
+      align-items: center;
+      padding: 0px;
+      margin-top: -70px; /* Ajusta a posição vertical */
+      justify-content: center;
+      gap: 15px;
+      cursor: pointer;
+    } /* ajustar posição para não sobrepor as imagens quando a tela for diminuída */
+
+    @media (max-width: 768px) {
+    .botao {
+      top: auto; /* Remove a centralização vertical */
+      bottom: 20px; /* Posiciona o botão no rodapé */
+      left: 10px; /* Ajusta a margem esquerda */
+    }
+    }
+
+    .botao {
+      transition: transform 0.3s;
+    }
+
+    .botao:hover {
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <img src="imagens/1.jpg" alt="Foto 1" class="thumbnail">
+    <img src="imagens/2.jpg" alt="Foto 2" class="thumbnail">
+    <img src="imagens/3.jpg" alt="Foto 3" class="thumbnail">
+    <img src="imagens/4.jpg" alt="Foto 4" class="thumbnail">
+    <img src="imagens/5.jpg" alt="Foto 5" class="thumbnail">
+    <img src="imagens/6.jpg" alt="Foto 6" class="thumbnail">
+    <img src="imagens/7.jpg" alt="Foto 7" class="thumbnail">
+    <img src="imagens/8.jpg" alt="Foto 8" class="thumbnail">
+    <img src="imagens/9.jpg" alt="Foto 9" class="thumbnail">
+    <img src="imagens/10.jpg" alt="Foto 10" class="thumbnail">
+    <img src="imagens/11.jpg" alt="Foto 11" class="thumbnail">
+    <img src="imagens/12.jpg" alt="Foto 12" class="thumbnail">
+    <img src="imagens/13.jpg" alt="Foto 13" class="thumbnail">
+    <img src="imagens/14.jpg" alt="Foto 14" class="thumbnail">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Imagem ampliada">
+  </div>
+
+  <div class="divDoBotao">
+    <a href="index.html" class="botao">
+      <img src="imagens/tecla-de-seta-para-a-esquerda-64.png" class="icone" alt=""></a>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const closeBtn = document.querySelector('.close');
+
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = thumbnail.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do amor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('imagens/background.png');
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: "Sono", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            background-color: aliceblue;
+            border: 2px solid #000000;
+            margin: 20px;
+            margin-top: -90px;
+            text-decoration: none;
+            color: #4b7b97;
+            /* background: none; */
+            /* border: none; */
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-10px);
+        }
+
+        .icone {
+            transition: all 0.3s ease;
+        }
+
+        .icone:hover {
+            transform: translateY(-8px);
+        }
+
+        /* button {
+            margin: 20px;
+            text-decoration: none;
+            color: inherit;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        } */
+
+        /* Estilo para os botões com fundo nos ícones */
+        .botao {
+            flex-direction: column; /* Organiza o conteúdo na vertical (ícone e texto) */
+            background-color: rgb(255, 255, 255); /* Fundo branco para o botão */
+            border: 3px solid #5f9abd; /* Borda do botão */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            cursor: pointer;
+            border-radius: 20px; /* Bordas arredondadas para o botão */
+            transition: all 0.3s ease; /* Efeito suave de transição */
+        }
+
+        /* Efeito de hover para o botão */
+        .botao:hover {
+            background-color: #f3f3f3; /* Cor de fundo ao passar o mouse */
+            border-color: #5f9abd; /* Muda a cor da borda */
+        }
+
+        footer{
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(255, 255, 255);
+        }
+
+        .cloud {
+            position: absolute;
+            right: 4em;
+            animation: cloud-float 50s infinite;
+            z-index: -1; /* Coloca as nuvens atrás de outros elementos */
+            opacity: 0; /* Inicialmente as nuvens estão invisíveis */
+        }
+
+        @keyframes cloud-float {
+            0% {
+                transform: translateX(0); /* Posição inicial */
+                opacity: 0; /* Inicia invisível */
+            }
+            30% {
+                opacity: 1; /* Começa a aparecer após 30% do tempo da animação */
+            }
+            100% {
+                transform: translateX(-140em); /* Move a nuvem para a esquerda */
+                opacity: 1; /* Fica visível durante o movimento */
+            }
+        }
+
+        .cloud-1 {
+            top: 3.75em;
+        }
+
+        .cloud-2 {
+            top: 11.37em;
+            animation-delay: 8s;
+        }
+
+        .cloud-3 {
+            top: 34em;
+            animation-delay: 4s;
+        }
+
+        .cloud-4 {
+            top: 31em;
+            animation-delay: 13s;
+        }
+
+        /* tamanho das nuvens */
+        .cloud-1 img {
+            width: 90px;
+            height: auto;
+        }
+
+        .cloud-2 img {
+            width: 100px;
+            height: auto;
+        }
+
+        .cloud-3 img {
+            width: 60px;
+            height: auto;
+        }
+
+        .cloud-4 img {
+            width: 60px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clouds">
+        <div class="cloud cloud-1"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-2"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-3"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-4"><img src="imagens/nuvem-100.png" alt=""></div>
+    </div>
+
+    <div>
+        <a href="momentos.html" class="botao">
+            <img src="imagens/câmera-100.png" class="icone" alt="">Momentos
+        </a>
+
+        <a href="jornada.html" class="botao">
+            <img src="imagens/relógio-100.png" class="icone" alt="">Jornada
+        </a>
+
+        <!-- <a href="presente.html" class="botao">
+            <img src="imagens/presente-100.png" class="icone" alt="">Presente (?)
+        </a> -->
+
+        <a href="carta.html" class="botao">
+            <img src="imagens/mensagem-100.png" class="icone" alt="">Carta
+        </a>
+
+        <a href="jogos.html" class="botao">
+            <img src="imagens/controle-100.png" class="icone" alt="">Jogos
+        </a>
+        
+        <a href="playlist.html" class="botao">
+            <img src="imagens/música-100.png" class="icone" alt="">Playlist
+        </a>
+    </div>
+
+    <footer>
+        <p>Made with &lt;3 by</p>
+    </footer>
+
+</body>
+</html>
