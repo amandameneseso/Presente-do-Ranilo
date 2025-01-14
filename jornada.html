@@ -4,48 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jornada</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
+            flex-direction: column;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: -150px 0 80px;
+            background-color: antiquewhite;
+            border-radius: 40px;
+            color: #5c8368;
+        }
+
+        .countdown {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('imagens/background.png');
-            height: 100vh;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            font-family: "Sono", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
+            transform: scale(2);
         }
 
-        .divDoBotao {
-            position: absolute; /* Torna possível posicionar com `top` e `left` */
-            top: 50%; /* Centraliza verticalmente */
-            left: 70px; /* Alinha à esquerda com um espaço de 20px da borda */
+        .time {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 0px;
-            margin-top: -70px; /* Ajusta a posição vertical */
             justify-content: center;
-            gap: 15px;
-            cursor: pointer;
+            margin: 15px;
         }
 
-        .botao {
-            transition: transform 0.3s;
+        .time h2 {
+            font-weight: bold;
+            font-size: 2em;
+            line-height: 1.5em;
+            margin: 0 0 5px;
         }
 
-        .botao:hover {
-            transform: scale(1.05);
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 20px;
+            }
+            .time {
+                margin: 5px;
+            }
+            .time h2 {
+                font-size: 12px;
+            }
+            .time small {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -56,21 +64,54 @@
           <img src="imagens/tecla-de-seta-para-a-esquerda-64.png" class="icone" alt=""></a>
     </div>
 
-    <script>
-        const startDate = new Date('2024-07-04T00:00:00'); // Data de in cio
-        const display = document.createElement('div');
-        document.body.appendChild(display);
+    <h1>&nbsp;Há quanto tempo estamos juntos?&nbsp;</h1>
 
+    <div id="countdown" class="countdown">
+        <div class="time">
+            <h2 id="dias">00</h2>
+            <small>dias</small>
+        </div>
+
+        <div class="time">
+            <h2 id="horas">00</h2>
+            <small>horas</small>
+        </div>
+
+        <div class="time">
+            <h2 id="minutos">00</h2>
+            <small>minutos</small>
+        </div>
+
+        <div class="time">
+            <h2 id="segundos">00</h2>
+            <small>segundos</small>
+        </div>
+    </div>
+
+    <script>
+        // Selecionando elementos do DOM
+        const dias = document.getElementById('dias');
+        const horas = document.getElementById('horas');
+        const minutos = document.getElementById('minutos');
+        const segundos = document.getElementById('segundos');
+
+        // Data de início
+        const inicio = new Date('2024-07-04T17:00:00'); // Data de inicio
+
+        // Função para atualizar o temporizador
         function updateTimer() {
             const now = new Date();
-            const diff = now - startDate; // Diferença em milissegundos
+            const diff = now - inicio; // Diferença em milissegundos
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / (1000 * 60)) % 60);
+            const s = Math.floor((diff / (1000)) % 60);
 
-            display.textContent = `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+            dias.textContent = d;
+            horas.textContent = h;
+            minutos.textContent = m;
+            segundos.textContent = s;
         }
 
         updateTimer();

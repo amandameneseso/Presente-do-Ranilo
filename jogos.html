@@ -4,56 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogos</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('imagens/background.png');
-            height: 100vh;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            font-family: "Sono", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .divDoBotao {
-            position: absolute; /* Torna possível posicionar com `top` e `left` */
-            top: 50%; /* Centraliza verticalmente */
-            left: 70px; /* Alinha à esquerda com um espaço de 20px da borda */
-            display: flex;
-            align-items: center;
-            padding: 0px;
-            margin-top: -70px; /* Ajusta a posição vertical */
-            justify-content: center;
-            gap: 15px;
-            cursor: pointer;
-        }
-
-        .botao {
-            transition: transform 0.3s;
-        }
-
-        .botao:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="divDoBotao">
         <a href="index.html" class="botao">
           <img src="imagens/tecla-de-seta-para-a-esquerda-64.png" class="icone" alt=""></a>
+    </div>
+
+    <div class="jogos">
+        <h2>Jogamos</h2>
+        <ul>
+            <li>
+                <img src="imagens/jogo1.jpg" alt="Jogo 1">
+                <span>Nome do Jogo 1</span>
+            </li>
+            <li>
+                <img src="imagens/jogo2.jpg" alt="Jogo 2">
+                <span>Nome do Jogo 2</span>
+            </li>
+            <!-- Adicione mais jogos conforme necessário -->
+        </ul>
+
+        <h2>Ainda não jogamos</h2>
+        <ul>
+            <li>
+                <img src="imagens/jogo3.jpg" alt="Jogo 3">
+                <span>Nome do Jogo 3</span>
+            </li>
+            <li>
+                <img src="imagens/jogo4.jpg" alt="Jogo 4">
+                <span>Nome do Jogo 4</span>
+            </li>
+            <!-- Adicione mais jogos conforme necessário -->
+        </ul>
     </div>
     
 </body>
