@@ -7,22 +7,64 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .carta {
-            height: 50vh;
+            height: 83vh;  /* A altura da carta vai ser 50% da altura da tela */
+            max-width: 30%;  /* Limita a largura da carta ao tamanho da tela */
+            max-height: 83%;
             background-color: white;
-            padding: 20px;
+            background-image: url('imagens/papel-de-carta.jpg');  /* Defina o caminho da imagem de fundo */
+            background-size: 100% 100%;  /* Faz a imagem cobrir toda a área da div */
+            background-position: center;  /* Centraliza a imagem no fundo */
+            background-repeat: no-repeat;  /* Evita que a imagem se repita */
+            padding: 70px;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;  /* Centraliza horizontalmente o conteúdo */
+            align-items: center;      /* Centraliza verticalmente o conteúdo */
+            color: rgb(0, 0, 0);
+            text-align: center;       /* Centraliza o texto */
+            overflow: hidden;
+            word-wrap: break-word;    /* Outra maneira de garantir a quebra de palavra em uma nova linha */
         }
 
         p {
-            font-size: 2rem;
+            font-size: 1.5rem;
             text-align: center;
+            margin: 0;
+            z-index: 1; /* Garante que o texto fique acima da imagem */
+            word-break: break-word;  /* Garante que as palavras longas serão quebradas corretamente */
+            overflow-wrap: break-word; /* Faz com que as palavras longas sejam quebradas */
+            max-width: 100%; /* Impede que o texto ultrapasse a largura da div */
         }
+
+        .texto {
+            position: relative;
+            width: 100%;  /* Garante que a área do texto ocupe toda a largura da div */
+            padding: 10px; /* Adiciona padding ao redor do texto, se necessário */
+            box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+        }
+
+        @media (max-width: 768px) {
+            .carta {
+                max-width: 100%;
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 1300px) {
+            .carta {
+                max-width: 50%;
+                max-height: 80%;
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <div class="carta">
-        <p>texto...............</p>
+        <div class="texto">
+            <p>texto........................</p>
+        </div>
     </div>
 
     <div class="divDoBotao">
@@ -32,3 +74,4 @@
     
 </body>
 </html>
+
