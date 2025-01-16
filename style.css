@@ -68,26 +68,26 @@ body {
 
 .cloud-1 {
     top: 3.75em;
-    animation-duration: 40s;
+    animation-duration: 50s;
 }
 
 .cloud-2 {
     top: 11.37em;
     animation-delay: 8s;
-    animation-duration: 50s;
+    animation-duration: 60s;
 
 }
 
 .cloud-3 {
-    top: 34em;
+    top: 32em;
     animation-delay: 2s;
-    animation-duration: 80s;
+    animation-duration: 110s;
 
 }
 
 .cloud-4 {
-    top: 31em;
-    animation-delay: 11s;
+    top: 25em;
+    animation-delay: 13s;
     animation-duration: 90s;
 
 }
