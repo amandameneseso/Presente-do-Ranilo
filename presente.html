@@ -15,6 +15,7 @@
             position: relative;
             width: 18em;
             height: 18em;
+            cursor: pointer;
         }
 
         .box-tape,
@@ -31,7 +32,7 @@
         .box-tape-center,
         .box-tape-left,
         .box-tape-right {
-            background-color: #cc2424;
+            background-color: #4f9273;
         }
 
         .box-tape {
@@ -51,7 +52,7 @@
 
         .box-tape-left,
         .box-tape-right {
-            box-shadow: 0 0 0 0.7em #ee2e2e inset;
+            box-shadow: 0 0 0 0.7em #61b18c inset;
             top: 0.3em;
             width: 4em;
             height: 5em;
@@ -60,7 +61,7 @@
 
         .box-tape-left::before,
         .box-tape-right::before {
-            background-color: #ee2e2e;
+            background-color: #61b18c;
             border-radius: inherit;
             content: "";
             display: block;
@@ -100,7 +101,7 @@
 
         .box-gifts {
             animation: box-Bounce 1.5s ease-in-out infinite;
-            background: linear-gradient(#cc2424, #cc2424) 50% 50% / 3.3em 100% no-repeat, #dfd9d9;
+            background: linear-gradient(#4f9273, #4f9273) 50% 50% / 3.3em 100% no-repeat, #e4e1e1;
             border-radius: 1.5em;
             bottom: 0.5em;
             left: 3.3em;
@@ -118,7 +119,7 @@
 
         .box-gift {
             animation: box-Bounce2 1.5s ease-in-out infinite;
-            background: linear-gradient(#ee2e2e, #ee2e2e) 50% 50% / 3.3em 100% no-repeat, #efffee;
+            background: linear-gradient(#61b18c, #61b18c) 50% 50% / 3.3em 100% no-repeat, #efffee;
             bottom: 8.7em;
             left: 2.5em;
         }
@@ -132,7 +133,7 @@
 
         .box-star {
             animation: starRotate1 1.5s ease-in-out infinite;
-            background-color: #fcff50;
+            background-color: #fdff88;
             clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
             transform: scale(0);
         }
@@ -145,6 +146,7 @@
 
         .box-star-1 {
             animation-delay: calc(1.5s * 0.5);
+            animation-duration: 3s;
             top: 0;
             left: 12.5em;
             width: 1.5em;
@@ -153,6 +155,7 @@
 
         .box-star-2 {
             animation-delay: calc(1.5s * 0.125);
+            animation-duration: 3s;
             top: 2em;
             left: 10em;
             width: 1.75em;
@@ -161,6 +164,7 @@
 
         .box-star-3 {
             animation-delay: calc(1.5s * 0.25);
+            animation-duration: 3s;
             top: 8em;
             left: 0em;
             width: 1.25em;
@@ -168,6 +172,7 @@
         }
 
         .box-star-4 {
+            animation-duration: 3s;
             top: 10.5em;
             left: 0;
             width: 1.75em;
@@ -176,6 +181,7 @@
 
         .box-star-5 {
             animation-delay: calc(1.5s * 0.375);
+            animation-duration: 3s;
             top: 12em;
             left: 1.8em;
             width: 2.5em;
@@ -282,7 +288,7 @@
                 transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
             }
             to {
-                transform: translateY(0) scale(1.1) rotate(0);
+                transform: translateY(0) scale(1.0) rotate(0);
             }
         }
 
@@ -338,9 +344,33 @@
                 transform: scale(0) rotate(-0.5turn);
             }
         }
+
+        /* .open .box-gift {
+            transform: translateY(-150%) scale(1.5);
+            transition: transform 0.5s;
+        }
+
+        .open .box-tape {
+            display: none;
+        } */
+
+       
+
+        /* .open .box-gift {
+            transform: translateY(-900%) scale(8.5); /* Levanta o presente */
+            /* transition: transform 0.5s ease; */
+        }
+
+        /* .open .box-tape {
+            opacity: 0; /* Faz a fita desaparecer */
+            /* transition: opacity 0.3s ease; */
+        } */ */
+
+
     </style>
 </head>
 <body>
+    <div class="box" onclick="toggleOpen(this)">
     <div class="box">
         <div class="box-tape">
             <div class="box-tape-left"></div>
@@ -357,6 +387,12 @@
         <div class="box-star box-star-4"></div>
         <div class="box-star box-star-5"></div>
     </div>
+    <!-- <script>
+        function toggleOpen(element) {
+            element.classList.toggle('open');
+        }
+    </script> -->
     
 </body>
 </html>
+
