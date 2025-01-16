@@ -20,7 +20,7 @@ body {
     background-attachment: fixed;
     font-family: "Sono", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .divDoBotao {
@@ -42,6 +42,75 @@ body {
 
 .botao:hover {
     transform: scale(1.05);
+}
+
+.cloud {
+    position: absolute;
+    right: 4em;
+    animation: cloud-float 30s linear infinite;
+    z-index: -1; /* Coloca as nuvens atrás de outros elementos */
+    opacity: 0; /* Inicialmente as nuvens estão invisíveis */
+}
+
+@keyframes cloud-float {
+    0% {
+        transform: translateX(0); /* Posição inicial */
+        opacity: 0; /* Inicia invisível */
+    }
+    25% {
+        opacity: 1; /* Começa a aparecer após 30% do tempo da animação */
+    }
+    100% {
+        transform: translateX(-140em); /* Move a nuvem para a esquerda */
+        opacity: 1; /* Fica visível durante o movimento */
+    }
+}
+
+.cloud-1 {
+    top: 3.75em;
+    animation-duration: 40s;
+}
+
+.cloud-2 {
+    top: 11.37em;
+    animation-delay: 8s;
+    animation-duration: 50s;
+
+}
+
+.cloud-3 {
+    top: 34em;
+    animation-delay: 2s;
+    animation-duration: 80s;
+
+}
+
+.cloud-4 {
+    top: 31em;
+    animation-delay: 11s;
+    animation-duration: 90s;
+
+}
+
+/* tamanho das nuvens */
+.cloud-1 img {
+    width: 90px;
+    height: auto;
+}
+
+.cloud-2 img {
+    width: 100px;
+    height: auto;
+}
+
+.cloud-3 img {
+    width: 60px;
+    height: auto;
+}
+
+.cloud-4 img {
+    width: 60px;
+    height: auto;
 }
 
 @media (max-width: 900px) {
