@@ -29,6 +29,56 @@
             position: absolute;
         }
 
+        .box-gifts,
+        .box-gift,
+        .box-star {
+            position: absolute;
+            animation: bounce 2.5s ease-in-out infinite forwards;
+        }
+
+        @keyframes bounce {
+            35% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(0);
+            }
+            54% {
+                transform: translateY(-24px);
+            }
+            60% {
+                transform: translateY(-24px);
+            }
+            80% {
+                transform: translateY(-24px) rotate(1%);
+            };
+        }
+
+        .box-tape,
+        .box-tape-left,
+        .box-tape-right,
+        .box-tape-center {
+            animation: bounceTapes 2.5s ease-in-out infinite forwards;
+        }
+
+        @keyframes bounceTapes {
+            30% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(0);
+            }
+            54% {
+                transform: translateY(-12px);
+            }
+            60% {
+                transform: translateY(-13px);
+            }
+            80% {
+                transform: translateY(-12px) rotate(1%);
+            };
+        }
+
         .box-tape-center,
         .box-tape-left,
         .box-tape-right {
@@ -36,7 +86,7 @@
         }
 
         .box-tape {
-            animation: bTape 1.5s ease-in-out infinite;
+            /* animation: bTape 2s ease-in-out infinite; */
             bottom: 11em;
             left: 7.5em;
             width: 3em;
@@ -70,7 +120,7 @@
         }
 
         .box-tape-left {
-            animation: bleft 1.5s ease-in-out infinite;
+            /* animation: bleft 2s ease-in-out infinite; */
             border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 3.5em;
             right: calc(100% - 0.75em);
             transform: rotate(35deg);
@@ -82,7 +132,7 @@
         }
 
         .box-tape-right {
-            animation: bRight 1.5s ease-in-out infinite;
+            /* animation: bRight 2s ease-in-out infinite; */
             border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
             left: calc(100% - 0.75em);
             transform: rotate(-35deg);
@@ -100,9 +150,9 @@
         }
 
         .box-gifts {
-            animation: box-Bounce 1.5s ease-in-out infinite;
-            background: linear-gradient(#4f9273, #4f9273) 50% 50% / 3.3em 100% no-repeat, #e4e1e1;
-            border-radius: 1.5em;
+            /* animation: box-Bounce 2s ease-in-out infinite; */
+            background: linear-gradient(#4f9273, #4f9273) 50% 50% / 3.3em 100% no-repeat, #f3bdbd;
+            border-radius: 0.4em 0.4em 1.5em 1.5em;
             bottom: 0.5em;
             left: 3.3em;
             overflow: hidden;
@@ -118,14 +168,14 @@
         }
 
         .box-gift {
-            animation: box-Bounce2 1.5s ease-in-out infinite;
-            background: linear-gradient(#61b18c, #61b18c) 50% 50% / 3.3em 100% no-repeat, #efffee;
+            /* animation: box-Bounce2 2s ease-in-out infinite; */
+            background: linear-gradient(#61b18c, #61b18c) 50% 50% / 3.3em 100% no-repeat, #f1cac7;
             bottom: 8.7em;
             left: 2.5em;
         }
 
         .box-gift-shadow {
-            animation: boxShadowBounce 1.5s ease-in-out infinite;
+            /* animation: boxShadowBounce 2s ease-in-out infinite; */
             background-color: #00000010;
             top: -1.5em;
             left: -1em;
@@ -182,13 +232,45 @@
         .box-star-5 {
             animation-delay: calc(1.5s * 0.375);
             animation-duration: 3s;
-            top: 12em;
-            left: 1.8em;
+            top: 6em;
+            left: 14.7em;
             width: 2.5em;
             height: 2.5em;
         }
 
-        @keyframes bTape {
+        .box
+        .shadow {
+            content: "";
+            position: relative;
+            width: 11em;
+            height: 2em;
+            background: rgba(0, 0, 0, 0.07);
+            top: 17em;
+            border-radius: 30%;
+            left: 3.5em;
+            z-index: -1;
+            animation: bounceOut 2.5s ease-in-out infinite forwards;
+        }
+
+        @keyframes bounceOut {
+            35% {
+                transform: translateY(0) scale(1);
+            }
+            40% {
+                transform: translateY(0) scale(1);
+            }
+            54% {
+                transform: translateY(10px)scale(0.8);
+            }
+            60% {
+                transform: translateY(10px) scale(0.8);
+            }
+            80% {
+                transform: translateY(10px) rotate(1%) scale(0.7);
+            };
+        }
+
+        /* @keyframes bTape {
             from,
             50% {
                 transform: translateY(0) rotate(0);
@@ -315,7 +397,7 @@
             to {
                 transform: translateY(0) scale(1.1) rotate(0);
             }
-        }
+        } */
 
         @keyframes starRotate1 {
             from {
@@ -346,7 +428,7 @@
         }
 
         /* .open .box-gift {
-            transform: translateY(-150%) scale(1.5);
+            transform: translateY(-250%);
             transition: transform 0.5s;
         }
 
@@ -357,14 +439,14 @@
        
 
         /* .open .box-gift {
-            transform: translateY(-900%) scale(8.5); /* Levanta o presente */
-            /* transition: transform 0.5s ease; */
+            transform: translateY(-900%) scale(8.5);
+            transition: transform 0.5s ease;
         }
 
-        /* .open .box-tape {
-            opacity: 0; /* Faz a fita desaparecer */
-            /* transition: opacity 0.3s ease; */
-        } */ */
+        .open .box-tape {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        } */
 
 
     </style>
@@ -386,12 +468,23 @@
         <div class="box-star box-star-3"></div>
         <div class="box-star box-star-4"></div>
         <div class="box-star box-star-5"></div>
+        <div class="shadow"></div>
     </div>
-    <!-- <script>
-        function toggleOpen(element) {
-            element.classList.toggle('open');
-        }
-    </script> -->
+
+    <script>
+        // function toggleOpen(element) {
+        //     element.classList.toggle('open');
+        // }
+
+        // const click = document.querySelector('.box');
+        // click.addEventListener('click', () => {
+        //     if(click.className=='box'){
+        //         click.classList.add('open');
+        //     } else{
+        //         click.classList.remove('open');
+        //     }
+        // })
+    </script>
     
 </body>
 </html>
