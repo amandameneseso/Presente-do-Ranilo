@@ -3,182 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presente</title>
+    <title>Meu presente 🎁</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            display: grid;
-            place-items: center;
-        }
-
-        .box {
-            position: relative;
-            width: 18em;
-            height: 18em;
-            cursor: pointer;
-        }
-
-        .box-tape,
-        .box-tape-left,
-        .box-tape-right,
-        .box-tape-center,
-        .box-gifts,
-        .box-gift-shadow,
-        .box-gift,
-        .box-star {
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
+            bottom: 20%;
         }
 
-        .box-gifts,
-        .box-gift,
-        .box-star {
+        .container.active {
+            animation: vibration 0.5s ease forwards;
+        }
+
+        @keyframes vibration {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(0.95, 1.05);
+            }
+            50% {
+                transform: scale(1.1, 0.9);
+            }
+            70% {
+                transform: scale(0.9, 1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .container .gift-box {
             position: absolute;
-            animation: bounce 2.5s ease-in-out infinite forwards;
+            height: 200px;
+            width: 300px;
+            background: #e0b2b2;
+            border-radius: 0 0 12px 12px;
+            animation: bounce 3.5s ease infinite forwards;
         }
 
         @keyframes bounce {
-            35% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(0);
-            }
-            54% {
+            0% {
                 transform: translateY(-24px);
             }
-            60% {
+            50% {
+                transform: translateY(0px);
+            }
+            100% {
                 transform: translateY(-24px);
             }
-            80% {
-                transform: translateY(-24px) rotate(1%);
-            };
         }
 
-        .box-tape,
-        .box-tape-left,
-        .box-tape-right,
-        .box-tape-center {
-            animation: bounceTapes 2.5s ease-in-out infinite forwards;
+        .gift-box.active {
+            animation: none;
         }
 
-        @keyframes bounceTapes {
-            30% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(0);
-            }
-            54% {
-                transform: translateY(-12px);
-            }
-            60% {
-                transform: translateY(-13px);
-            }
-            80% {
-                transform: translateY(-12px) rotate(1%);
-            };
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 200px;
+            background: #ce6247;
+            border-radius: 0 0 8px 8px;
+            left: 124px;
         }
 
-        .box-tape-center,
-        .box-tape-left,
-        .box-tape-right {
-            background-color: #4f9273;
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            box-shadow: inset 0 14px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 200px;
         }
 
-        .box-tape {
-            /* animation: bTape 2s ease-in-out infinite; */
-            bottom: 11em;
-            left: 7.5em;
-            width: 3em;
-            height: 2em;
-            transform-origin: 50% 230%;
+        .click {
+            position: absolute;
+            width: 340px;
+            height: 90px;
+            background: #f3bdbd;
+            border-radius: 10px;
+            top: -90px;
+            left: -20px;
+            cursor: pointer;
+            z-index: 1;
+            transition: 0.5s ease;
         }
 
-        .box-tape-center {
-            border-radius: 1em;
-            width: 100%;
-            height: 100%;
+        .click.active {
+            transition-delay: 0.5s;
+            transform: translateY(-230px);
         }
 
-        .box-tape-left,
-        .box-tape-right {
-            box-shadow: 0 0 0 0.7em #61b18c inset;
-            top: 0.3em;
-            width: 4em;
-            height: 5em;
+        .click::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 90px;
+            border-radius: 8px 8px 0 0;
+            background: #e76f51;
+            left: 144px;
+            z-index: 2;
+        }
+
+        .click::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 0;
+            border-bottom: 60px solid #e76f51;
+            border-top: 60px solid #e76f51;
+            border-left: 0 solid transparent;
+            border-right: 60px solid transparent;
+            border-radius: 20px;
+            transform: rotate(-90deg);
+            top: -91px;
+            left: 136px;
+            z-index: 3;
+        }
+
+        .container .shadow {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 35px;
+            background: rgba(0, 0, 0, 0.2);
+            top: 100px;
+            border-radius: 50%;
+            animation: bounceOut 3.5s ease infinite forwards;
             z-index: -1;
         }
 
-        .box-tape-left::before,
-        .box-tape-right::before {
-            background-color: #61b18c;
-            border-radius: inherit;
-            content: "";
-            display: block;
-            position: absolute;
-            inset: 0;
+        @keyframes bounceOut {
+            0% {
+                transform: translateY(24px) scale(0.8);
+            }
+            50% {
+                transform: translateY(0px) scale(1);
+            }
+            100% {
+                transform: translateY(24px) scale(0.8);
+            }
         }
 
-        .box-tape-left {
-            /* animation: bleft 2s ease-in-out infinite; */
-            border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 3.5em;
-            right: calc(100% - 0.75em);
-            transform: rotate(35deg);
-            transform-origin: 100% 15%;
-        }
-
-        .box-tape-left::before {
-            clip-path: polygon(0 42%, 100% 12%, 100% 100%, 0 100%);
-        }
-
-        .box-tape-right {
-            /* animation: bRight 2s ease-in-out infinite; */
-            border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
-            left: calc(100% - 0.75em);
-            transform: rotate(-35deg);
-            transform-origin: 0% 15%;
-        }
-
-        .box-tape-right::before {
-            clip-path: polygon(0 12%, 100% 42%, 100% 100%, 0 100%);
-        }
-
-        .box-gifts,
-        .box-gift,
-        .box-gift-shadow {
-            transform-origin: 50% 100%;
-        }
-
-        .box-gifts {
-            /* animation: box-Bounce 2s ease-in-out infinite; */
-            background: linear-gradient(#4f9273, #4f9273) 50% 50% / 3.3em 100% no-repeat, #f3bdbd;
-            border-radius: 0.4em 0.4em 1.5em 1.5em;
-            bottom: 0.5em;
-            left: 3.3em;
-            overflow: hidden;
-            width: 11.4em;
-            height: 9em;
-        }
-
-        .box-gift,
-        .box-gift-shadow {
-            border-radius: 1em;
-            width: 13em;
-            height: 3.3em;
-        }
-
-        .box-gift {
-            /* animation: box-Bounce2 2s ease-in-out infinite; */
-            background: linear-gradient(#61b18c, #61b18c) 50% 50% / 3.3em 100% no-repeat, #f1cac7;
-            bottom: 8.7em;
-            left: 2.5em;
-        }
-
-        .box-gift-shadow {
-            /* animation: boxShadowBounce 2s ease-in-out infinite; */
-            background-color: #00000010;
-            top: -1.5em;
-            left: -1em;
+        .container .shadow.active {
+            animation: none;
         }
 
         .box-star {
@@ -186,6 +157,7 @@
             background-color: #fdff88;
             clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
             transform: scale(0);
+            position: absolute;
         }
 
         .box-star-2,
@@ -197,8 +169,8 @@
         .box-star-1 {
             animation-delay: calc(1.5s * 0.5);
             animation-duration: 3s;
-            top: 0;
-            left: 12.5em;
+            top: -3em;
+            left: -12.5em;
             width: 1.5em;
             height: 1.5em;
         }
@@ -206,8 +178,8 @@
         .box-star-2 {
             animation-delay: calc(1.5s * 0.125);
             animation-duration: 3s;
-            top: 2em;
-            left: 10em;
+            top: -12em;
+            left: -12em;
             width: 1.75em;
             height: 1.75em;
         }
@@ -215,16 +187,16 @@
         .box-star-3 {
             animation-delay: calc(1.5s * 0.25);
             animation-duration: 3s;
-            top: 8em;
-            left: 0em;
+            top: -11em;
+            left: 10em;
             width: 1.25em;
             height: 1.25em;
         }
 
         .box-star-4 {
             animation-duration: 3s;
-            top: 10.5em;
-            left: 0;
+            top: -17.5em;
+            left: 2em;
             width: 1.75em;
             height: 1.75em;
         }
@@ -232,172 +204,11 @@
         .box-star-5 {
             animation-delay: calc(1.5s * 0.375);
             animation-duration: 3s;
-            top: 6em;
-            left: 14.7em;
+            top: -6em;
+            left: 7.7em;
             width: 2.5em;
             height: 2.5em;
         }
-
-        .box
-        .shadow {
-            content: "";
-            position: relative;
-            width: 11em;
-            height: 2em;
-            background: rgba(0, 0, 0, 0.07);
-            top: 17em;
-            border-radius: 30%;
-            left: 3.5em;
-            z-index: -1;
-            animation: bounceOut 2.5s ease-in-out infinite forwards;
-        }
-
-        @keyframes bounceOut {
-            35% {
-                transform: translateY(0) scale(1);
-            }
-            40% {
-                transform: translateY(0) scale(1);
-            }
-            54% {
-                transform: translateY(10px)scale(0.8);
-            }
-            60% {
-                transform: translateY(10px) scale(0.8);
-            }
-            80% {
-                transform: translateY(10px) rotate(1%) scale(0.7);
-            };
-        }
-
-        /* @keyframes bTape {
-            from,
-            50% {
-                transform: translateY(0) rotate(0);
-            }
-            62.5% {
-                transform: translateY(75%) rotate(0);
-            }
-            68.75% {
-                transform: translateY(-37.5%) rotate(15deg);
-            }
-            75% {
-                transform: translateY(-150%) rotate(5deg);
-            }
-            87.5% {
-                transform: translateY(65%) rotate(-3deg);
-            }
-            to {
-                transform: translateY(0) rotate(0);
-            }
-        }
-
-        @keyframes bleft {
-            from,
-            50% {
-                transform: rotate(35deg);
-            }
-            62.5% {
-                transform: rotate(45%);
-            }
-            75% {
-                transform: rotate(30%);
-            }
-            87.5% {
-                transform: rotate(45%);
-            }
-            to {
-                transform: rotate(35deg);
-            }
-        }
-
-        @keyframes bRight {
-            from,
-            50% {
-                transform: rotate(-35deg);
-            }
-            62.5% {
-                transform: rotate(-45%);
-            }
-            75% {
-                transform: rotate(-35%);
-            }
-            87.5% {
-                transform: rotate(-45%);
-            }
-            to {
-                transform: rotate(-35deg);
-            }
-        }
-
-        @keyframes box-Bounce {
-            from,
-            50% {
-                transform: translateY(0) scale(1,1);
-            }
-            62.5% {
-                transform: translateY(4%) scale(1.12, 0.89);
-            }
-            75% {
-                transform: translateY(-11%) scale(0.92, 1.1);
-            }
-            87.5% {
-                transform: translateY(0) scale(1.05, 0.9);
-            }
-            to {
-                transform: translateY(0) scale(1,1);
-            }
-        }
-
-        @keyframes box-Bounce2 {
-            from,
-            50% {
-                transform: translateY(0) scale(1, 1) rotate(0);
-            }
-            62.5% {
-                animation-timing-function: ease-in;
-                transform: translateY(45%) scale(1.14, 0.95) rotate(0);
-            }
-            68.75% {
-                animation-timing-function: ease-out;
-                transform: translateY(-22.5%) scale(1.05, 1.03) rotate(15deg);
-            }
-            75% {
-                animation-timing-function: ease-out;
-                transform: translateY(-90%) scale(0.96, 1.1) rotate(5deg);
-            }
-            87.5% {
-                transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
-            }
-            to {
-                transform: translateY(0) scale(1.0) rotate(0);
-            }
-        }
-
-        @keyframes boxShadowBounce {
-            from,
-            50% {
-                transform: translateY(0) scale(1, 1) rotate(0);
-            }
-            62.5% {
-                animation-timing-function: ease-in;
-                transform: translateY(10%) scale(1.14, 0.95) rotate(0);
-            }
-            68.75% {
-                animation-timing-function: ease-out;
-                transform: translateY(-10%) scale(1.05, 1.03) rotate(15deg);
-            }
-            75% {
-                animation-timing-function: ease-out;
-                transform: translateY(-30%) scale(0.96, 1.1) rotate(5deg);
-            }
-            87.5% {
-                transform: translateY(10%) scale(1.12, 0.93) rotate(-3deg);
-            }
-            to {
-                transform: translateY(0) scale(1.1) rotate(0);
-            }
-        } */
 
         @keyframes starRotate1 {
             from {
@@ -427,65 +238,78 @@
             }
         }
 
-        /* .open .box-gift {
-            transform: translateY(-250%);
-            transition: transform 0.5s;
+        .box-star.active {
+            animation: none;
         }
 
-        .open .box-tape {
-            display: none;
-        } */
-
-       
-
-        /* .open .box-gift {
-            transform: translateY(-900%) scale(8.5);
-            transition: transform 0.5s ease;
+        body {
+            transition: opacity 0.5s ease;
         }
 
-        .open .box-tape {
+        body.fade-out {
             opacity: 0;
-            transition: opacity 0.3s ease;
-        } */
+        }
 
 
     </style>
 </head>
 <body>
-    <div class="box" onclick="toggleOpen(this)">
-    <div class="box">
-        <div class="box-tape">
-            <div class="box-tape-left"></div>
-            <div class="box-tape-right"></div>
-            <div class="box-tape-center"></div>
+
+    <div class="container">
+        <div class="gift-box">
+            <div class="click"></div>
         </div>
-        <div class="box-gifts">
-            <div class="box-gift-shadow"></div>
-        </div>
-        <div class="box-gift"></div>
+        <div class="shadow"></div>
         <div class="box-star box-star-1"></div>
         <div class="box-star box-star-2"></div>
         <div class="box-star box-star-3"></div>
         <div class="box-star box-star-4"></div>
         <div class="box-star box-star-5"></div>
-        <div class="shadow"></div>
+    </div>
+
+    <div class="clouds">
+        <div class="cloud cloud-1"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-2"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-3"><img src="imagens/nuvem-100.png" alt=""></div>
+        <div class="cloud cloud-4"><img src="imagens/nuvem-100.png" alt=""></div>
     </div>
 
     <script>
-        // function toggleOpen(element) {
-        //     element.classList.toggle('open');
-        // }
+        const click = document.querySelector('.click');
+        const giftBox = document.querySelector('.gift-box');
+        const shadow = document.querySelector('.shadow');
+        const container = document.querySelector('.container');
+        const stars = document.querySelectorAll('.box-star');
+        const clickSound = new Audio('efeito-sonoro-presente.wav');
 
-        // const click = document.querySelector('.box');
-        // click.addEventListener('click', () => {
-        //     if(click.className=='box'){
-        //         click.classList.add('open');
-        //     } else{
-        //         click.classList.remove('open');
-        //     }
-        // })
+        click.addEventListener('click', () => {
+            if (!click.classList.contains('active')) {
+                // Tocar o som ao clicar
+                clickSound.currentTime = 0; 
+                clickSound.play();
+                setTimeout(() => {
+                    clickSound.pause();
+                }, 1500); // Interrompe o áudio após 1.5 segundo
+
+                // Adicionar classes para animar
+                click.classList.add('active');
+                giftBox.classList.add('active');
+                shadow.classList.add('active');
+                container.classList.add('active');
+                stars.forEach(star => {
+                    star.classList.add('active');
+                });
+
+                // Acionar o setTimeout após iniciar as animações
+                setTimeout(() => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                    }, 500); // Tempo correspondente à animação de fade-out
+                }, 1500); // Espera a animação do presente terminar
+            }
+        });
     </script>
     
 </body>
 </html>
-
