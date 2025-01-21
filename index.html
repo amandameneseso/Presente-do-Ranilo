@@ -6,79 +6,266 @@
     <title>Meu presente 🎁</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        div{
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            bottom: 20%;
         }
 
-        a {
-            background-color: aliceblue;
-            border: 2px solid #000000;
-            margin: 20px;
-            margin-top: -90px;
-            text-decoration: none;
-            color: #4b7b97;
-            /* background: none; */
-            /* border: none; */
-            padding: 0;
+        .container.active {
+            animation: vibration 0.5s ease forwards;
+        }
+
+        @keyframes vibration {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(0.95, 1.05);
+            }
+            50% {
+                transform: scale(1.1, 0.9);
+            }
+            70% {
+                transform: scale(0.9, 1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .container .gift-box {
+            position: absolute;
+            height: 200px;
+            width: 300px;
+            background: #e0b2b2;
+            border-radius: 0 0 12px 12px;
+            animation: bounce 3.5s ease infinite forwards;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(-24px);
+            }
+            50% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(-24px);
+            }
+        }
+
+        .gift-box.active {
+            animation: none;
+        }
+
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 200px;
+            background: #ce6247;
+            border-radius: 0 0 8px 8px;
+            left: 124px;
+        }
+
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            box-shadow: inset 0 14px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 200px;
+        }
+
+        .click {
+            position: absolute;
+            width: 340px;
+            height: 90px;
+            background: #f3bdbd;
+            border-radius: 10px;
+            top: -90px;
+            left: -20px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            z-index: 1;
+            transition: 0.5s ease;
         }
 
-        a:hover {
-            transform: translateY(-10px);
+        .click.active {
+            transition-delay: 0.5s;
+            transform: translateY(-230px);
         }
 
-        .icone {
-            transition: all 0.3s ease;
+        .click::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 90px;
+            border-radius: 8px 8px 0 0;
+            background: #e76f51;
+            left: 144px;
+            z-index: 2;
         }
 
-        .icone:hover {
-            transform: translateY(-8px);
-        }
-
-        /* Estilo para os botões com fundo nos ícones */
-        .botao {
-            flex-direction: column;
-            background-color: rgb(255, 255, 255);
-            border: 3px solid #5f9abd;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            cursor: pointer;
+        .click::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 0;
+            border-bottom: 60px solid #e76f51;
+            border-top: 60px solid #e76f51;
+            border-left: 0 solid transparent;
+            border-right: 60px solid transparent;
             border-radius: 20px;
-            transition: all 0.3s ease;
+            transform: rotate(-90deg);
+            top: -91px;
+            left: 136px;
+            z-index: 3;
         }
 
-        /* Efeito de hover para o botão */
-        .botao:hover {
-            background-color: #f3f3f3;
+        .container .shadow {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 35px;
+            background: rgba(0, 0, 0, 0.2);
+            top: 100px;
+            border-radius: 50%;
+            animation: bounceOut 3.5s ease infinite forwards;
+            z-index: -1;
         }
 
-        footer{
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            width: 100%;
-            padding: 10px;
+        @keyframes bounceOut {
+            0% {
+                transform: translateY(24px) scale(0.8);
+            }
+            50% {
+                transform: translateY(0px) scale(1);
+            }
+            100% {
+                transform: translateY(24px) scale(0.8);
+            }
         }
 
-        footer p {
-            margin-bottom: 20px;
-            font-size: 1rem;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: rgb(255, 255, 255);
+        .container .shadow.active {
+            animation: none;
         }
 
-        
+        .box-star {
+            animation: starRotate1 1.5s ease-in-out infinite;
+            background-color: #fdff88;
+            clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
+            transform: scale(0);
+            position: absolute;
+        }
+
+        .box-star-2,
+        .box-star-4,
+        .box-star-5 {
+            animation-name: starRotate2;
+        }
+
+        .box-star-1 {
+            animation-delay: calc(1.5s * 0.5);
+            animation-duration: 3s;
+            top: -3em;
+            left: -12.5em;
+            width: 1.5em;
+            height: 1.5em;
+        }
+
+        .box-star-2 {
+            animation-delay: calc(1.5s * 0.125);
+            animation-duration: 3s;
+            top: -12em;
+            left: -12em;
+            width: 1.75em;
+            height: 1.75em;
+        }
+
+        .box-star-3 {
+            animation-delay: calc(1.5s * 0.25);
+            animation-duration: 3s;
+            top: -11em;
+            left: 10em;
+            width: 1.25em;
+            height: 1.25em;
+        }
+
+        .box-star-4 {
+            animation-duration: 3s;
+            top: -17.5em;
+            left: 2em;
+            width: 1.75em;
+            height: 1.75em;
+        }
+
+        .box-star-5 {
+            animation-delay: calc(1.5s * 0.375);
+            animation-duration: 3s;
+            top: -6em;
+            left: 7.7em;
+            width: 2.5em;
+            height: 2.5em;
+        }
+
+        @keyframes starRotate1 {
+            from {
+                transform: scale(0) rotate(0);
+            }
+            25% {
+                animation-timing-function: ease-out;
+                transform: scale(1) rotate(0.25turn);
+            }
+            50%,
+            to {
+                transform: scale(0) rotate(0.5turn);
+            }
+        }
+
+        @keyframes starRotate2 {
+            from {
+                transform: scale(0) rotate(0);
+            }
+            25% {
+                animation-timing-function: ease-out;
+                transform: scale(1) rotate(-0.25turn);
+            }
+            50%,
+            to {
+                transform: scale(0) rotate(-0.5turn);
+            }
+        }
+
+        .box-star.active {
+            animation: none;
+        }
+
+        body {
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+
     </style>
 </head>
 <body>
+
+    <div class="container">
+        <div class="gift-box">
+            <div class="click"></div>
+        </div>
+        <div class="shadow"></div>
+        <div class="box-star box-star-1"></div>
+        <div class="box-star box-star-2"></div>
+        <div class="box-star box-star-3"></div>
+        <div class="box-star box-star-4"></div>
+        <div class="box-star box-star-5"></div>
+    </div>
 
     <div class="clouds">
         <div class="cloud cloud-1"><img src="imagens/nuvem-100.png" alt=""></div>
@@ -87,35 +274,42 @@
         <div class="cloud cloud-4"><img src="imagens/nuvem-100.png" alt=""></div>
     </div>
 
-    <div>
-        <a href="momentos.html" class="botao">
-            <img src="imagens/câmera-100.png" class="icone" alt="">Momentos
-        </a>
+    <script>
+        const click = document.querySelector('.click');
+        const giftBox = document.querySelector('.gift-box');
+        const shadow = document.querySelector('.shadow');
+        const container = document.querySelector('.container');
+        const stars = document.querySelectorAll('.box-star');
+        const clickSound = new Audio('efeito-sonoro-presente.wav');
 
-        <a href="jornada.html" class="botao">
-            <img src="imagens/relógio-100.png" class="icone" alt="">Jornada
-        </a>
+        click.addEventListener('click', () => {
+            if (!click.classList.contains('active')) {
+                // Tocar o som ao clicar
+                clickSound.currentTime = 0; 
+                clickSound.play();
+                setTimeout(() => {
+                    clickSound.pause();
+                }, 1500); // Interrompe o áudio após 1.5 segundo
 
-        <!-- <a href="presente.html" class="botao">
-            <img src="imagens/presente-100.png" class="icone" alt="">Presente (?)
-        </a> -->
+                // Adicionar classes para animar
+                click.classList.add('active');
+                giftBox.classList.add('active');
+                shadow.classList.add('active');
+                container.classList.add('active');
+                stars.forEach(star => {
+                    star.classList.add('active');
+                });
 
-        <a href="carta.html" class="botao">
-            <img src="imagens/mensagem-100.png" class="icone" alt="">Carta
-        </a>
-
-        <a href="jogos.html" class="botao">
-            <img src="imagens/controle-100.png" class="icone" alt="">Jogos
-        </a>
-        
-        <a href="playlist.html" class="botao">
-            <img src="imagens/música-100.png" class="icone" alt="">Playlist
-        </a>
-    </div>
-
-    <footer>
-        <p>Made with &lt;3 by</p>
-    </footer>
-
+                // Acionar o setTimeout após iniciar as animações
+                setTimeout(() => {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'presente.html';
+                    }, 500); // Tempo correspondente à animação de fade-out
+                }, 1500); // Espera a animação do presente terminar
+            }
+        });
+    </script>
+    
 </body>
 </html>

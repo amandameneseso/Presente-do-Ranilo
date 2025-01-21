@@ -6,65 +6,178 @@
     <title>Carta</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .carta {
-            height: 83vh;  /* A altura da carta vai ser 50% da altura da tela */
-            max-width: 30%;  /* Limita a largura da carta ao tamanho da tela */
-            max-height: 83%;
-            background-color: white;
-            background-image: url('imagens/papel-de-carta.jpg');
-            border-radius: 10px;
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 70px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            overflow: hidden;
-            word-wrap: break-word;    /* Outra maneira de garantir a quebra de palavra em uma nova linha */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .valentines {
+        position: relative;
+        top: 130px;
+        cursor: pointer;
+        animation: up 3s linear infinite;
+      }
+
+      @keyframes up {
+        0%, 100% {
+          transform: translateY(0);
         }
-
-        p {
-            font-size: 1.5rem;
-            text-align: center;
-            margin: 0;
-            z-index: 1; /* Garante que o texto fique acima da imagem */
-            word-break: break-word;  /* Garante que as palavras longas serão quebradas corretamente */
-            overflow-wrap: break-word; /* Faz com que as palavras longas sejam quebradas */
-            max-width: 100%; /* Impede que o texto ultrapasse a largura da div */
+        50% {
+          transform: translateY(-30px);
         }
+      }
 
-        .texto {
-            position: relative;
-            width: 100%;  /* Garante que a área do texto ocupe toda a largura da div */
-            padding: 10px; /* Adiciona padding ao redor do texto, se necessário */
-            box-sizing: border-box; /* Inclui o padding no cálculo da largura */
-        }
+      .envelope {
+        position: relative;
+        width: 550px;
+        height: 350px;
+        background-color: #f08080;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        @media (max-width: 1068px) {
-            .carta {
-                max-width: 100%;
-                margin: 20px;
-            }
-        }
+      .envelope:before {
+        background-color: #f08080; 
+        content:"";
+        position: absolute;
+        width: 388px;
+        height: 389px;
+        transform: rotate(45deg);
+        top: -195px;
+        left: 81px;
+        border-radius:30px 0 0 0;
+      }
 
-        /* @media (max-width: 1300px) {
-            .carta {
-                max-width: 50%;
-                max-height: 80%;
-            }
-        } */
+      .card {
+        position: absolute;
+        /* background-color: #ece7c7; */
+        background-image: url('imagens/papel-de-carta4.jpg');
+        /* background-size: 100% 160%; */
+        background-size: cover;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+        /* padding: 90px; */
+        /* text-align: center; */
+        word-break: break-word;  /* palavras longas serão quebradas */
+        width: 520px;
+        height: 350px;
+        top: 5px;
+        left: 15px;
+        box-shadow: 0px -20px 40px rgba(0, 0, 0, 0.22);
+        transition: transform 0.3s ease-in-out;
+        /* z-index: 11; */
+      }
 
+      .card.open {
+        transform: translateY(-200px);
+      }
+
+      /* .card:before {
+        content:"";
+        position: absolute;
+        border:3px solid #003049;
+        border-style: dashed;
+        width: 340px;
+        heighT: 260px;
+        left: 12px;
+        top: 12px;
+      } */
+
+      /* .valentines:hover .card {
+        transform: translateY(-203px);
+      } */
+
+      .text {
+        position: absolute;
+        font-family: 'Brush Script MT', cursive;
+        font-size: 16px;
+        text-align: left;
+        line-height: 21px;
+        max-width: 100%;
+        margin: auto;
+        padding: 55px;
+        /* top: 19px; */
+        left: 35px;
+        color: #0e3f5a;
+      }
+
+      .heart {
+        background-color: #d62828;
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        margin: 0 10px;
+        position: relative;
+        top: -53px;
+        left: 15px;
+        transform: rotate(-45deg);
+        z-index: 11;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        background-color: #d62828;
+        border-radius: 50%;
+        height: 30px;
+        position: absolute;
+        width: 30px;
+      }
+
+      .heart:before {
+        top: -15px;
+        left: 0;
+      }
+
+      .heart:after {
+        left: 15px;
+        top: 0;
+      }
+
+      .front {
+        position: absolute;
+        border-right: 375px solid #f4978e;
+        border-top: 165px solid transparent;
+        border-bottom: 180px solid transparent;
+        left: 175px;
+        top: 10px;
+        width: 0;
+        height: 0;
+        z-index: 10;
+      }
+
+      .front:before {
+        position: absolute;
+        content:"";
+        border-left: 550px solid #f8ad9d;
+        border-top: 346px solid transparent;
+        left: -175px;
+        top: -165px;
+        width: 0;
+        height: 0;
+      }
     </style>
 </head>
 <body>
 
-    <div class="carta">
-        <div class="texto">
-            <p>texto........................</p>
+    <div class="container">
+        <div class="valentines">
+          <div class="envelope">
+            <div class="card">
+              <div class="text">
+                texto
+              </div>
+            </div>
+          </div>
+          <div class="heart"></div>
+          <div class="front"></div>
         </div>
     </div>
 
@@ -79,6 +192,21 @@
         <div class="cloud cloud-3"><img src="imagens/nuvem-100.png" alt=""></div>
         <div class="cloud cloud-4"><img src="imagens/nuvem-100.png" alt=""></div>
     </div>
+
+    <script>
+      const card = document.querySelector('.card');
+      const valentines = document.querySelector('.valentines');
+
+      valentines.addEventListener('click', () => {
+        card.classList.toggle('open'); // Alterna a classe "open" da carta
+
+        if (card.classList.contains('open')) {
+          valentines.style.animation = 'none'; // Remove a animação quando a carta é aberta
+        } else {
+          valentines.style.animation = 'up 3s linear infinite'; // Restaura a animação quando a carta é fechada
+        }
+      });
+    </script>
     
 </body>
 </html>
