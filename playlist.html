@@ -91,30 +91,32 @@
             cursor: pointer;
             width: 30px;
             height: 70px;
-            background-color: #333533;
+            background-color: #d84242;
             border: none;
             border-radius: 2px;
         }
 
-        /* input#volume-control::-ms-thumb {
+        input#volume-control::-ms-thumb {
             cursor: pointer;
             width: 30px;
             height:70px;
-            background-color: #333533;
+            background-color: #d84242;
             border: none;
             border-radius:2px;
-        } */
+        }
 
         input#volume-control::-webkit-slider-runnable-track {
-            background-color: #d6d6d64d;
+            background-color: #d6d6d65d;
             border: none;
             margin: -30px; 
+            /* border-radius: 5px; */
         }
 
         input#volume-control::-moz-range-track {
             background-color: #333533;
-            border: 30px solid black;
-            outline: 2px solid #d6d6d6;
+            border: 5px solid black;
+            outline: 30px solid #d6d6d6;
+            border-radius: 5px;
         }
 
         .platter {
@@ -210,7 +212,7 @@
         }
 
         .headshell:before {
-            background-color: rgb(216, 66, 66);
+            background-color: #d84242;
             width: 20px;
             height: 30px;
             top: -20px;
@@ -240,6 +242,20 @@
         @keyframes play  {
             to {transform: rotate(360deg);}
         }
+
+        #playlist {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #618576;
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -248,7 +264,7 @@
         <input type="checkbox" id="headshell">
         <label class="headshell" for="headshell"></label>
         <audio id="player">
-            <source src="musica.mp3" type="audio/mp3"/>
+            <source id="audio-source" src="musicas/Arrival-of-the-Birds.mp3" type="audio/mp3"/>
         </audio>
         <input type="range" max="1" min="0" step="0.1" id="volume-control" onchange="audioVolume(this.value)">
         <div class="plinth"></div>
@@ -256,6 +272,13 @@
         <div class="vinyl"></div>
         <div class="top-circle"></div>
     </div>
+
+    <!-- Lista de reprodução -->
+    <select id="playlist" onchange="changeTrack()">
+        <option value="musicas/Arrival-of-the-Birds.mp3">Música 1</option>
+        <option value="musicas/Forsaken.mp3">Música 2</option>
+        <option value="musicas/I-Am.mp3">Música 3</option>
+    </select>
     
     <div class="divDoBotao">
         <a href="presente.html" class="botao">
@@ -272,21 +295,30 @@
     <script>
         let input = document.getElementById('headshell');
         let audio = document.getElementById('player');
+        let playlist = document.getElementById('playlist');
+        let audioSource = document.getElementById('audio-source');
 
         input.addEventListener('click', function() {
             if(audio.paused) {
                 audio.play();
-                audio.currentTime = 0;
-                input.innerHTML = "Pause";
+                // input.innerHTML = "Pause";
             } else {
                 audio.pause();
-                input.innerHTML = "Play";
+                // input.innerHTML = "Play";
             }
         });
 
         function audioVolume(amount) {
         let changevolume = document.getElementsByTagName("audio")[0];
         changevolume.volume = amount;
+        }
+
+        // Trocar de faixa ao selecionar uma nova música
+        function changeTrack() {
+            let selectedTrack = playlist.value; // Obtém o valor da faixa selecionada
+            audioSource.src = selectedTrack; // Atualiza o src do áudio
+            audio.load(); // Carrega a nova faixa
+            // audio.play(); // Reproduz a faixa automaticamente
         }
     </script>
 
