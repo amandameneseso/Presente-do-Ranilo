@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('imagens/background.png');
+    background-image: url('imagens/background-desktop.png');
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,10 +113,28 @@ body {
     height: auto;
 }
 
-@media (max-width: 900px) {
+/* 🔹 Tablets e laptops médios (entre 768px e 1199px) */
+@media (max-width: 1199px) {
+    body {
+        background-image: url('imagens/background-tablets-laptops.png'); /* Imagem para tablets */
+    }
     .divDoBotao {
-    top: auto; /* Remove a centralização vertical */
-    bottom: 15px; /* Posiciona o botão no rodapé */
-    left: 15px; /* Ajusta a margem esquerda */
+        top: auto; /* Remove a centralização vertical */
+        bottom: 15px; /* Posiciona o botão no rodapé */
+        left: 15px; /* Ajusta a margem esquerda */
+    }
+}
+
+/* 🔹 Celulares grandes (entre 480px e 767px) */
+@media (max-width: 767px) {
+    body {
+        background-image: url('imagens/background-celulares-grandes.png'); /* Imagem para celulares grandes */
+    }
+}
+
+/* 🔹 Celulares pequenos (menos de 480px) */
+@media (max-width: 350px) {
+    body {
+        background-image: url('imagens/background-celulares-pequenos.jpg'); /* Imagem menor para celulares pequenos */
     }
 }

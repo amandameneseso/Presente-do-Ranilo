@@ -3,7 +3,7 @@ const click = document.querySelector('.click');
         const shadow = document.querySelector('.shadow');
         const container = document.querySelector('.container');
         const stars = document.querySelectorAll('.box-star');
-        const clickSound = new Audio('efeito-sonoro-presente.wav');
+        const clickSound = new Audio('musicas/efeito-sonoro-presente.wav');
 
         click.addEventListener('click', () => {
             if (!click.classList.contains('active')) {

@@ -6,28 +6,42 @@
     <title>Meu presente 🎁</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        div{
+        body {
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        a {
-            background-color: aliceblue;
-            border: 2px solid #000000;
-            margin: 20px;
-            margin-top: -90px;
-            text-decoration: none;
-            color: #4b7b97;
-            /* background: none; */
-            /* border: none; */
-            padding: 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .botoes-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cria até duas colunas */
+            gap: 30px; /* Adiciona espaçamento entre os botões */
+            width: 90%;
+            max-width: 1500px; /* Limita o tamanho da área */
+            margin: auto;
+            padding: 50px 20px;
+            box-sizing: border-box;
         }
 
-        a:hover {
+        .botao {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #5f9abd;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #4b7b97;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .botao:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
         }
 
         .icone {
@@ -41,7 +55,7 @@
         /* Estilo para os botões com fundo nos ícones */
         .botao {
             flex-direction: column;
-            background-color: rgb(255, 255, 255);
+            background-color: #f7f7f7;
             border: 3px solid #5f9abd;
             padding: 20px;
             display: flex;
@@ -55,7 +69,7 @@
 
         /* Efeito de hover para o botão */
         .botao:hover {
-            background-color: #f3f3f3;
+            background-color: #fdfdfd;
         }
 
         footer{
@@ -75,6 +89,32 @@
             color: rgb(255, 255, 255);
         }
 
+        @media (max-width: 768px) {
+            .botoes-container {
+                grid-template-columns: 2fr;
+                padding: 30px 120px;
+                gap: 20px;
+            }
+
+            .botao {
+                padding: 20px;
+            }
+
+            .icone {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .botao {
+                font-size: 0.9em;
+            }
+            footer {
+                position: relative;
+                padding: 10px;
+            }
+        }
         
     </style>
 </head>
@@ -87,7 +127,7 @@
         <div class="cloud cloud-4"><img src="imagens/nuvem-100.png" alt=""></div>
     </div>
 
-    <div>
+    <div class="botoes-container">
         <a href="momentos.html" class="botao">
             <img src="imagens/câmera-100.png" class="icone" alt="">Momentos
         </a>
