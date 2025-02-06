@@ -25,14 +25,10 @@ body {
 
 .divDoBotao {
     position: absolute; /* Torna possível posicionar com `top` e `left` */
-    top: 50%; /* Centraliza verticalmente */
     left: 70px; /* Alinha à esquerda com um espaço de 20px da borda */
     display: flex;
     align-items: center;
-    padding: 0px;
-    margin-top: -70px; /* Ajusta a posição vertical */
     justify-content: center;
-    gap: 15px;
     cursor: pointer;
 }
 
