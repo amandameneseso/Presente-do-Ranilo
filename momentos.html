@@ -8,7 +8,7 @@
   <style>
     .container {
       max-width: 1224px;
-      width: 50%;
+      width: 60%;
       margin: auto;
       padding: 50px 0;
     }
@@ -81,6 +81,52 @@
       font-size: 30px;
       color: white;
       cursor: pointer;
+    }
+
+    /* Telas médias (até 1224px) → Duas colunas */
+    @media (max-width: 1224px) {
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* Telas menores (até 768px) → Apenas uma coluna */
+    @media (max-width: 768px) {
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .photo img {
+        width: 90%; /* Mantém um tamanho confortável */
+        max-width: 300px; /* Evita imagens muito grandes */
+      }
+
+      .thumbnail {
+        width: 90%;
+        max-width: 300px;
+      }
+    }
+
+    /* Telas muito pequenas (até 480px) → Ajustes finos */
+    @media (max-width: 480px) {
+      .container {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .photo img {
+        width: 100%; /* Ocupa toda a tela */
+        max-width: 250px;
+      }
+
+      .thumbnail {
+        width: 100%;
+        max-width: 250px;
+      }
     }
 
   </style>

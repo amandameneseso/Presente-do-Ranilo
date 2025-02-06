@@ -112,14 +112,14 @@ body {
 }
 
 /* 🔹 Celulares grandes (entre 480px e 767px) */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     body {
         background-image: url('imagens/background-celulares-grandes.png'); /* Imagem para celulares grandes */
     }
 }
 
 /* 🔹 Celulares pequenos (menos de 480px) */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
     body {
         background-image: url('imagens/background-celulares-pequenos.png'); /* Imagem menor para celulares pequenos */
     }
