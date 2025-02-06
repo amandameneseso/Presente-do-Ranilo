@@ -45,7 +45,7 @@ body {
 }
 
 .cloud {
-    position: absolute;
+    position: fixed;
     right: 4em;
     animation: cloud-float 30s linear infinite;
     z-index: -1; /* Coloca as nuvens atrás de outros elementos */
@@ -67,51 +67,33 @@ body {
 }
 
 .cloud-1 {
-    top: 3.75em;
+    top: 10%;
     animation-duration: 50s;
 }
 
 .cloud-2 {
-    top: 11.37em;
+    top: 20%;
     animation-delay: 8s;
     animation-duration: 60s;
-
 }
 
 .cloud-3 {
-    top: 32em;
+    top: 40%;
     animation-delay: 2s;
     animation-duration: 110s;
-
 }
 
 .cloud-4 {
-    top: 25em;
+    top: 50%;
     animation-delay: 13s;
     animation-duration: 90s;
-
 }
 
 /* tamanho das nuvens */
-.cloud-1 img {
-    width: 90px;
-    height: auto;
-}
-
-.cloud-2 img {
-    width: 100px;
-    height: auto;
-}
-
-.cloud-3 img {
-    width: 60px;
-    height: auto;
-}
-
-.cloud-4 img {
-    width: 60px;
-    height: auto;
-}
+.cloud-1 img { width: 90px; height: auto; }
+.cloud-2 img { width: 100px; height: auto; }
+.cloud-3 img { width: 60px; height: auto; }
+.cloud-4 img { width: 60px; height: auto; }
 
 /* 🔹 Tablets e laptops médios (entre 768px e 1199px) */
 @media (max-width: 1199px) {
@@ -123,6 +105,10 @@ body {
         bottom: 15px; /* Posiciona o botão no rodapé */
         left: 15px; /* Ajusta a margem esquerda */
     }
+    .divDoBotao img {
+        width: 50px;
+        height: auto;
+    }
 }
 
 /* 🔹 Celulares grandes (entre 480px e 767px) */
@@ -133,8 +119,8 @@ body {
 }
 
 /* 🔹 Celulares pequenos (menos de 480px) */
-@media (max-width: 350px) {
+@media (max-width: 360px) {
     body {
-        background-image: url('imagens/background-celulares-pequenos.jpg'); /* Imagem menor para celulares pequenos */
+        background-image: url('imagens/background-celulares-pequenos.png'); /* Imagem menor para celulares pequenos */
     }
 }

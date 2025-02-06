@@ -27,7 +27,7 @@ const click = document.querySelector('.click');
                 setTimeout(() => {
                 document.body.classList.add('fade-out');
                 setTimeout(() => {
-                    window.location.href = 'presente.html';
+                    window.location.href = 'home.html';
                     }, 500); // Tempo correspondente à animação de fade-out
                 }, 1500); // Espera a animação do presente terminar
             }
