@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeria de Jogos</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      .monitor {
+        background-color: #333;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .screen-content {
+        background-color: #222;
+        color: #eee;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        max-height: 290px; /* Define a altura máxima */
+        overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo exceder a altura */
+      }
+
+      .game-gallery {
+        list-style-type: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(100px, 1fr)
+        ); /* Reduz o tamanho mínimo das colunas */
+        gap: 5px; /* Reduz o espaçamento entre os itens */
+        margin-top: 10px; /* Reduz a margem superior */
+        max-height: calc(
+          290px - 60px
+        ); /* Ajusta a altura máxima da galeria (altura total - espaço para o título) */
+        overflow-y: auto; /* Adiciona barra de rolagem se muitos jogos */
+      }
+
+      .game-item {
+        background-color: #444;
+        border-radius: 3px; /* Reduz o arredondamento da borda */
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reduz a sombra */
+      }
+
+      .game-item img {
+        width: 100%;
+        height: 70px; /* Define uma altura fixa para as imagens */
+        object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer muito */
+        display: block;
+      }
+
+      .game-title {
+        padding: 5px; /* Reduz o padding */
+        text-align: center;
+        font-size: 0.8em; /* Reduz o tamanho da fonte */
+        white-space: nowrap; /* Evita que o texto quebre para a próxima linha */
+        overflow: hidden; /* Esconde o texto que ultrapassa */
+        text-overflow: ellipsis; /* Adiciona "..." para indicar texto cortado */
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background-color: #333;
+        color: #eee;
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      .game-description h2 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="monitor">
+        <div class="screen-content">
+          <h1>☆ Nossa Galeria de Jogos</h1>
+          <ul class="game-gallery" id="gameGallery">
+            <li class="game-item" data-game="aero-fighters">
+              <img src="imagens/Aero_Fighters.png" alt="Aero Fighters" />
+              <div class="game-title">Aero Fighters</div>
+            </li>
+            <li class="game-item" data-game="super-mario-bros-3">
+              <img
+                src="imagens/Super_Mario_Bros._3.png"
+                alt="Super Mario Bros 3"
+              />
+              <div class="game-title">Super Mario Bros 3</div>
+            </li>
+            <li class="game-item" data-game="donkey-kong-3">
+              <img src="imagens/donkey_kong_3_thumb.jpg" alt="Donkey Kong 3" />
+              <div class="game-title">Donkey Kong 3</div>
+            </li>
+            <li class="game-item" data-game="fighting-force">
+              <img
+                src="imagens/fighting_force_thumb.jpg"
+                alt="Fighting Force"
+              />
+              <div class="game-title">Fighting Force</div>
+            </li>
+            <li class="game-item" data-game="resident-evil-6">
+              <img src="imagens/Resident_evil_6.jpg" alt="Resident Evil 6" />
+              <div class="game-title">Resident Evil 6</div>
+            </li>
+            <li class="game-item" data-game="resident-evil-5">
+              <img src="imagens/Resident_evil_5.png" alt="Resident Evil 5" />
+              <div class="game-title">Resident Evil 5</div>
+            </li>
+            <li class="game-item" data-game="gta-v">
+              <img src="imagens/GTA_5.jpg" alt="GTA V" />
+              <div class="game-title">GTA V</div>
+            </li>
+            <li class="game-item" data-game="lego-harry-potter">
+              <img
+                src="imagens/lego_harry_potter_thumb.jpg"
+                alt="Lego Harry Potter"
+              />
+              <div class="game-title">Lego Harry Potter</div>
+            </li>
+            <li class="game-item" data-game="a-way-out">
+              <img src="imagens/a_way_out_thumb.jpg" alt="A Way Out" />
+              <div class="game-title">A Way Out</div>
+            </li>
+            <li class="game-item" data-game="pode">
+              <img src="imagens/pode_thumb.jpg" alt="Pode" />
+              <div class="game-title">Pode</div>
+            </li>
+            <li class="game-item" data-game="unruly-heroes">
+              <img src="imagens/unruly_heroes_thumb.jpg" alt="Unruly Heroes" />
+              <div class="game-title">Unruly Heroes</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="gameModal">
+      <div class="modal-content">
+        <span class="close-button" id="closeModal">&times;</span>
+        <div class="game-description" id="gameDescription"></div>
+      </div>
+    </div>
+
+    <script>
+      const gameGallery = document.getElementById("gameGallery");
+      const gameModal = document.getElementById("gameModal");
+      const closeModalButton = document.getElementById("closeModal");
+      const gameDescriptionDiv = document.getElementById("gameDescription");
+      const gameItems = gameGallery.querySelectorAll(".game-item");
+
+      // Objeto para armazenar as descrições dos jogos
+      const gameDescriptions = {
+        "aero-fighters":
+          "Um clássico jogo de tiro aéreo com muita ação e diversos personagens.",
+        "super-mario-bros-3":
+          "Considerado um dos melhores jogos de plataforma de todos os tempos, cheio de segredos e power-ups.",
+        "donkey-kong-3":
+          "Uma aventura única com Davey Kong tentando proteger sua horta de criaturas irritantes.",
+        "fighting-force":
+          "Um beat 'em up 3D com muita pancadaria e ação cooperativa.",
+        "resident-evil-6":
+          "Uma entrada ambiciosa na série Resident Evil, com múltiplas campanhas interconectadas.",
+        "resident-evil-5":
+          "Foco na ação cooperativa enquanto Chris Redfield e Sheva Alomar enfrentam novas ameaças na África.",
+        "gta-v":
+          "Um mundo aberto massivo com três protagonistas e uma história envolvente no submundo do crime.",
+        "lego-harry-potter":
+          "Reviva a saga de Harry Potter com o humor e a mecânica característicos dos jogos Lego.",
+        "a-way-out":
+          "Uma aventura cooperativa onde dois prisioneiros precisam trabalhar juntos para escapar da cadeia.",
+        pode: "Um charmoso jogo de aventura e quebra-cabeças sobre uma pequena criatura de musgo e uma estrela cadente.",
+        "unruly-heroes":
+          "Um jogo de plataforma de ação com visuais vibrantes e jogabilidade cooperativa caótica.",
+        // Adicione as descrições para os outros jogos aqui
+      };
+
+      gameItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const gameId = item.getAttribute("data-game");
+          const description = gameDescriptions[gameId];
+
+          if (description) {
+            gameDescriptionDiv.innerHTML = `<h2>${
+              item.querySelector(".game-title").textContent
+            }</h2><p>${description}</p>`;
+            gameModal.style.display = "flex";
+          } else {
+            gameDescriptionDiv.innerHTML = `<p>Descrição não disponível para ${
+              item.querySelector(".game-title").textContent
+            }.</p>`;
+            gameModal.style.display = "flex";
+          }
+        });
+      });
+
+      closeModalButton.addEventListener("click", () => {
+        gameModal.style.display = "none";
+      });
+
+      window.addEventListener("click", (event) => {
+        if (event.target === gameModal) {
+          gameModal.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
